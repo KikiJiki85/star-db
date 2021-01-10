@@ -9,9 +9,9 @@ const Header = () => {
                 <a href="$">Star DB</a>
             </h3>
             <ul className="d-flex">
-                <li><a href="#">People</a></li>
-                <li><a href="#">Planets</a></li>
-                <li><a href="#">Starships</a></li>
+                <li><a href="google.com" >People</a></li>
+                <li><a href="google.com">Planets</a></li>
+                <li><a href="google.com">Starships</a></li>
             </ul>
         </div>
     );
