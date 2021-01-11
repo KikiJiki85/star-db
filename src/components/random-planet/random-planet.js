@@ -22,10 +22,6 @@ export default class RandomPlanet extends Component {
         this.interval = setInterval(this.updatePlanet, 10000);
     };
 
-    componentWillUnmount() {
-        console.log('componentWillUnmount');
-    };
-
     onPlanetLoaded = (planet) => {
         this.setState({
             planet,
@@ -49,7 +45,6 @@ export default class RandomPlanet extends Component {
     };
 
     render() {
-        console.log('render');
         const {loading, planet, error} = this.state;
 
         const hasData = !(loading || error);
