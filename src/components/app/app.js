@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
 import Header from '../header';
-import RandomPlanet from '../random-planet';
 import ErrorIndicator from '../error-indicator';
-import ErrorButton from '../error-button';
-import PeoplePage from '../people-page';
 import SwapiService from '../../services/swapi-service';
 
 import './app.css';
+import Row from '../row';
+import ErrorBoundry from '../error-boundry';
+import ItemDetails from '../item-details/item-details';
 
 
 
@@ -41,23 +41,32 @@ export default class App extends Component {
             return <ErrorIndicator />
         }
 
-        const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
+        // const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
+
+        const {getPerson, getPersonImage, getStarship, getStarshipImage} = this.swapiService;
+
+        const personDetails = (
+            <ItemDetails 
+                itemId={3}
+                getData={getPerson}
+                getImageUrl={getPersonImage} />
+        );
+
+        const starshipDetails = (
+            <ItemDetails 
+                itemId={5}
+                getData={getStarship}
+                getImageUrl={getStarshipImage} />
+        );
 
         return (
-            <div>
-                <Header />
-                {planet}
-            
-                    <button
-                        className="toggle-planet btn btn-warning btn-lg"
-                        onClick={this.toggleRandomPlanet}>
-                            Toggle Random Planet
-                    </button>
-                    <ErrorButton />
-
-                <PeoplePage />
-
-            </div>
+            <ErrorBoundry>
+                <div>
+                    <Header />
+                    <Row left={personDetails}
+                        right={starshipDetails}/>
+                </div>
+            </ErrorBoundry>
         );
     }
 };
