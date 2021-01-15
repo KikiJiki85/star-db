@@ -4,11 +4,11 @@ import Header from '../header';
 import ErrorIndicator from '../error-indicator';
 import SwapiService from '../../services/swapi-service';
 
-import './app.css';
 import Row from '../row';
 import ErrorBoundry from '../error-boundry';
-import ItemDetails from '../item-details/item-details';
+import ItemDetails, {Record} from '../item-details/item-details';
 
+import './app.css';
 
 
 export default class App extends Component {
@@ -49,14 +49,18 @@ export default class App extends Component {
             <ItemDetails 
                 itemId={3}
                 getData={getPerson}
-                getImageUrl={getPersonImage} />
+                getImageUrl={getPersonImage}>
+                    <Record field="gender" label="Gender"/>
+                    <Record field="eyeColor" label="Eye Color"/>
+            </ItemDetails>
         );
 
         const starshipDetails = (
             <ItemDetails 
                 itemId={5}
                 getData={getStarship}
-                getImageUrl={getStarshipImage} />
+                getImageUrl={getStarshipImage}>
+            </ItemDetails>
         );
 
         return (
