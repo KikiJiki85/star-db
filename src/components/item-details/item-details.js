@@ -7,7 +7,7 @@ const Record = ({item, field, label}) => {
   return (              
     <li className="list-group-item">
       <span className="term">{label}</span>
-      <span>{field}</span>
+      <span>{item[field]}</span>
     </li>
   );
 };
@@ -59,7 +59,7 @@ export default class ItemDetails extends Component {
       return <span>Select a item from a list</span>;
     }
 
-    const {name, gender, birthYear, eyeColor} = item;
+    const {name} = item;
 
       return (
           <div className="item-details card">
@@ -70,7 +70,7 @@ export default class ItemDetails extends Component {
             <ul className="list-group list-group-flush">
               { 
                 React.Children.map(this.props.children, (child) => {
-                  return child;
+                  return React.cloneElement(child, { item });
                 })
               }
             </ul>
