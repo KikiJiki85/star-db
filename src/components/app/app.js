@@ -4,9 +4,16 @@ import Header from '../header';
 import ErrorIndicator from '../error-indicator';
 import SwapiService from '../../services/swapi-service';
 
-import Row from '../row';
 import ErrorBoundry from '../error-boundry';
-import ItemDetails, {Record} from '../item-details/item-details';
+
+import {
+    PersonDetails,
+    PlanetDetails,
+    StarshipDetails,
+    PersonList,
+    PlanetList,
+    StarshipList,
+} from '../sw-components';
 
 import './app.css';
 
@@ -42,35 +49,28 @@ export default class App extends Component {
 
         // const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
-        const {getPerson, getPersonImage, getStarship, getStarshipImage} = this.swapiService;
 
-        const personDetails = (
-            <ItemDetails 
-                itemId={2}
-                getData={getPerson}
-                getImageUrl={getPersonImage}>
-                    <Record field="gender" label="Gender"/>
-                    <Record field="eyeColor" label="Eye Color"/>
-            </ItemDetails>
-        );
 
-        const starshipDetails = (
-            <ItemDetails 
-                itemId={5}
-                getData={getStarship}
-                getImageUrl={getStarshipImage}>
-                    <Record field="model" label="Model"/>
-                    <Record field="length" label="Length"/>
-                    <Record field="costInCredits" label="Cost"/>
-            </ItemDetails>
-        );
 
         return (
             <ErrorBoundry>
-                <div>
+                <div className="stardb-app">
                     <Header />
-                    <Row left={personDetails}
-                        right={starshipDetails}/>
+
+                    <PersonDetails itemId={11}/>
+                    <PlanetDetails itemId={5}/>
+                    <StarshipDetails itemId={9}/>
+                    
+                    <PersonList>
+                        { ({name}) => <span>{name}</span> }
+                    </PersonList>
+                    <StarshipList>
+                        { ({name}) => <span>{name}</span> }
+                    </StarshipList>
+                    <PlanetList>
+                        { ({name}) => <span>{name}</span> }
+                    </PlanetList>
+
                 </div>
             </ErrorBoundry>
         );

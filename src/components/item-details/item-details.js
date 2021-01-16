@@ -17,7 +17,6 @@ export {
 };
 
 
-
 export default class ItemDetails extends Component {
 
   state = {
@@ -59,7 +58,7 @@ export default class ItemDetails extends Component {
       return <span>Select a item from a list</span>;
     }
 
-    const {name} = item;
+    const { name } = item;
 
       return (
           <div className="item-details card">
