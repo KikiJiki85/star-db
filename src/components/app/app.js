@@ -10,7 +10,6 @@ import ItemDetails, {Record} from '../item-details/item-details';
 
 import './app.css';
 
-
 export default class App extends Component {
 
     swapiService = new SwapiService();
